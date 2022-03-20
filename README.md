@@ -2,7 +2,7 @@
 
 # Bike-Sharing Patterns Prediction
 
-This project develops a neural network for predicting bike sharing patterns of a rental company over a year.
+This project develops a neural network for predicting bike sharing patterns for a rental company.
 
 This is the 1st project in Udacity's Deep Learning Nanodegree [1][2]. This README serves as a final report for the project.
 
@@ -35,7 +35,7 @@ NOTE. The objective of this project was to familiarize students with the maths i
 - [Pipeline](#pipeline)
 - [Feature Engineering](#feature-engineering)
 - [Data Loader](#data-loader)
-- [Data Pre-Processor](#data-preprocessor)
+- [Data Pre-Processor](#data-pre-processor)
 - [Neural Network](#neural-network)
 - [Training](#training)
 - [Testing](#testing)
@@ -82,7 +82,6 @@ NOTE. The objective of this project was to familiarize students with the maths i
 
 
 ```
-
 from bikesharing import *
 import pickle
 
@@ -109,7 +108,6 @@ predictions = nn.run(df_features)
 
 timestamps = get_timestamps_from_df_data(df_data)
 plot_predictions(predictions, MEANS, STDS, timestamps)
-
 ```
 
 This will load a chart of predictions in your browser.
@@ -265,7 +263,7 @@ Below are value distributions and time series for each feature in the dataset (f
 
 ### Missing Values
 
-The dataset contains no missing values.
+The dataset contained no missing values.
 
 # Data Cleaning
 
@@ -282,9 +280,9 @@ The neural network developped in this project is part of a machine learning pipe
 
 # Feature Engineering
 
-The training dataset contained enough features for developping the neural network. No new feature was developped.
+The training dataset contained enough features for developping the neural network. No new features had to be developped.
 
-However, only about 50 % of the original features were kept for training the network. Other features were deemed redundant or irrelevant. The features selected are listed below.
+However, about only 50 % of the original features were kept for training the network. Other features were deemed redundant or irrelevant. The features selected are listed below.
 
 	 season, yr, mnth, hr, holiday, weathersit,
 	 weekday, temp, hum, windspeed
@@ -296,7 +294,7 @@ And the following feature is used as our target.
 
 # Data Loader
 
-The data loader reads rental data from a csv file stores it in a DataFrame.
+The data loader reads rental data from a csv file and stores it in a DataFrame.
 
 	dl = DataLoader()
 	df_data = dl.load("path/to/file")	
@@ -307,19 +305,19 @@ The data loader reads rental data from a csv file stores it in a DataFrame.
 
 The data pre-processor formats the dataset raw data so it can be manipulated by the neural network.
 
-- The pre-processor performs scaling of some features. Means and standard deviations are stored in global variables MEANS and STDS (dictionnaries).
+- The pre-processor performs scaling of some features. Means and standard deviations must be provided when the pre-processor is instantiated. Values for this project are stored in global variables MEANS and STDS (dictionnaries).
 
 	```
 	dpp = DataPreprocessor(MEANS, STDS)
 	```
 
-- If the dataset contains targets, pre-processing can be performed on both the features and targets. Just use argument `targets=True` when running the preprocessor. Use this functionnality when preparing training data.
+- If the dataset contains targets, pre-processing can be performed on both the features and targets. Just use argument `targets=True` when running the preprocessor. Use this format when preparing training data.
 
 	```
 	df_features, df_targets = dpp.run(df_data, targets=True)
 	```
 
-- If the dataset only contains features, run the data pre-processor without using the `targets` argument. Use this when only performing predictions.
+- If the dataset only contains features, run the data pre-processor without using the `targets` argument. Use this format when performing predictions on new/unlabeled data.
 
 	```
 	df_features = dpp.run(df_data)
@@ -329,26 +327,26 @@ The data pre-processor formats the dataset raw data so it can be manipulated by 
 
 The data pre-processor performs the following transformations on features.
 
-<img src="images/data-preprocessing-features.png" height=200/> 
+<img src="images/data-preprocessing-features.png" height=250/> 
 
 
 ### Targets
 
 Targets are simply scaled.
 
-<img src="images/data-preprocessing-targets.png" height=200/> 
+<img src="images/data-preprocessing-targets.png" height=250/> 
 
 # Datasets
 
-The bike rental data dataset was split into training, validation and testing datasets. The data split is described in the table below.
+The bike rental data was split into training, validation and testing datasets. The data split is described in the table below.
 
-| datasets   | data_points   | %_total   | Note               |
-|:-----------|:--------------|:----------|--------------------|
-| train      | 15435         | 88.81     | Data over 2 years. |
-| valid      | 1440          | 8.29      | 60 days of data.   |
-| test       | 504           | 2.90      | 21 days of data.   |
-| -          | -             | -         |                    |
-| total      | 17379         | 100.00    |                    |
+| datasets   | data_points   | %_total   | Note                               |
+|:-----------|:--------------|:----------|------------------------------------|
+| train      | 15435         | 88.81     | Data over 2 years (minus 81 days). |
+| valid      | 1440          | 8.29      | 60 days of data.                   |
+| test       | 504           | 2.90      | 21 days of data.                   |
+| -          | -             | -         |                                    |
+| total      | 17379         | 100.00    |                                    |
 
 # Neural Network
 
@@ -361,7 +359,7 @@ The neural network architecture was kept simple.
 	- Number of nodes = hyperparameter.
 	- Activation function = sigmoid.
 - One output layer
-	- 1 node = predicted # of bike rental for a specific hour (scaled))
+	- 1 node = predicted # of bike rentals for a specific hour (scaled)
 
 <img src="images/neural-network.png"/> 
 
@@ -427,6 +425,7 @@ This model was kept as a stand-alone application and not deployed to the cloud.
 ### Possible Improvements
 
 - Improve the neural network class so any number of hidden layers can be specified by the user.
+- Predictions sometimes show negative values. Might be caused by incorrect MEANS and STDS values used for scaling features. To be investigated...
 
 ---
 # APPENDIX
@@ -439,14 +438,12 @@ This model was kept as a stand-alone application and not deployed to the cloud.
 
 ### Symbols
 
-| Symbol | Description                      | Size   |
+| Symbol | Description                      | Type   |
 |--------|----------------------------------|--------|
 | m      | Number of data points in a batch | Scalar |
 | μ      | Index of data point in a batch   | Scalar |
 | y      | Target real value                | Scalar |
-| Y      | Target real value                | Vector |
 | ŷ      | Target predicted value           | Scalar |
-| Ŷ      | Target predicted value           | Vector |
 
 
 ### References
