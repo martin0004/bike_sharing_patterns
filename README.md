@@ -15,42 +15,43 @@ NOTE. The objective of this project was to familiarize students with the maths i
 
 [SETUP](#setup)
 
-- [Install](#install)
-- [Usage](#usage)
-- [Project Files](#project-files)
+&emsp;[Install](#install)<br>
+&emsp;[Usage](#usage) <br>
+&emsp;[Project Files](#project-files)
 
 [PROBLEM](#problem)
 
-- [Customer Needs](#customer-needs)
-- [Requirements](#requirements)
+&emsp;[Customer Needs](#customer-needs) <br>
+&emsp;[Requirements](#requirements)
 
 [DATA](#data)
 
-- [Input Data](#input-data)
-- [Data Exploration](#data-exploration)
-- [Data Cleaning](#data-cleaning)
+&emsp;[Input Data](#input-data) <br>
+&emsp;[Data Exploration](#data-exploration) <br>
+&emsp;[Data Cleaning](#data-cleaning)
 
 [DESIGN](#design)
 
-- [Pipeline](#pipeline)
-- [Feature Engineering](#feature-engineering)
-- [Data Loader](#data-loader)
-- [Data Pre-Processor](#data-pre-processor)
-- [Neural Network](#neural-network)
-- [Training](#training)
-- [Testing](#testing)
+&emsp;[Pipeline](#pipeline) <br>
+&emsp;[Feature Engineering](#feature-engineering) <br>
+&emsp;[Data Loader](#data-loader) <br>
+&emsp;[Data Pre-Processor](#data-pre-processor) <br>
+&emsp;[Datasets](#datasets) <br>
+&emsp;[Neural Network](#neural-network) <br>
+&emsp;[Training](#training) <br>
+&emsp;[Testing](#testing)
 
 [IMPLEMENTATION](#implementation)
 
 [CONCLUSION](#conclusion)
 
-- [Possible Improvements](#possible-improvements)
+&emsp;[Possible Improvements](#possible-improvements)
 
 [APPENDIX](#appendix)
 
-- [Accronyms](#accronyms)
-- [Symbols](#symbols)
-- [References](#references)
+&emsp;[Accronyms](#accronyms) <br>
+&emsp;[Symbols](#symbols) <br>
+&emsp;[References](#references)
 
 
 ---
@@ -280,9 +281,9 @@ The neural network developped in this project is part of a machine learning pipe
 
 # Feature Engineering
 
-The training dataset contained enough features for developping the neural network. No new features had to be developped.
+The training dataset contained enough features for developing the neural network. No new features had to be developped.
 
-However, about only 50 % of the original features were kept for training the network. Other features were deemed redundant or irrelevant. The features selected are listed below.
+However, about only 50 % of the original features were kept for training the network. Other features were deemed redundant or irrelevant. Selected features are listed below.
 
 	 season, yr, mnth, hr, holiday, weathersit,
 	 weekday, temp, hum, windspeed
@@ -303,7 +304,7 @@ The data loader reads rental data from a csv file and stores it in a DataFrame.
 
 ### Overview
 
-The data pre-processor formats the dataset raw data so it can be manipulated by the neural network.
+The data pre-processor turns raw data into a format which can be manipulated by the neural network.
 
 - The pre-processor performs scaling of some features. Means and standard deviations must be provided when the pre-processor is instantiated. Values for this project are stored in global variables MEANS and STDS (dictionnaries).
 
@@ -317,7 +318,7 @@ The data pre-processor formats the dataset raw data so it can be manipulated by 
 	df_features, df_targets = dpp.run(df_data, targets=True)
 	```
 
-- If the dataset only contains features, run the data pre-processor without using the `targets` argument. Use this format when performing predictions on new/unlabeled data.
+- If the dataset only contains features, run the data pre-processor without the `targets` argument. Use this format when performing predictions on new/unlabeled data.
 
 	```
 	df_features = dpp.run(df_data)
