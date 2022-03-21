@@ -337,17 +337,6 @@ Targets are simply scaled.
 
 <img src="images/data-preprocessing-targets.png" height=250/> 
 
-# Datasets
-
-The bike rental data was split into training, validation and testing datasets. The data split is described in the table below.
-
-| datasets   | data_points   | %_total   | Note                               |
-|:-----------|:--------------|:----------|------------------------------------|
-| train      | 15435         | 88.81     | Data over 2 years (minus 81 days). |
-| valid      | 1440          | 8.29      | 60 days of data.                   |
-| test       | 504           | 2.90      | 21 days of data.                   |
-| -          | -             | -         |                                    |
-| total      | 17379         | 100.00    |                                    |
 
 # Neural Network
 
@@ -363,6 +352,20 @@ The neural network architecture was kept simple.
 	- 1 node = predicted # of bike rentals for a specific hour (scaled)
 
 <img src="images/neural-network.png"/> 
+
+
+# Datasets
+
+The bike rental data was split into training, validation and testing datasets. The data split is described in the table below.
+
+| datasets   | data_points   | %_total   | Note                               |
+|:-----------|:--------------|:----------|------------------------------------|
+| train      | 15435         | 88.81     | Data over 2 years (minus 81 days). |
+| valid      | 1440          | 8.29      | 60 days of data.                   |
+| test       | 504           | 2.90      | 21 days of data.                   |
+| -          | -             | -         |                                    |
+| total      | 17379         | 100.00    |                                    |
+
 
 # Training
 
