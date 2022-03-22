@@ -36,8 +36,8 @@ NOTE. The objective of this project was to familiarize students with the maths i
 &emsp;[Feature Engineering](#feature-engineering) <br>
 &emsp;[Data Loader](#data-loader) <br>
 &emsp;[Data Pre-Processor](#data-pre-processor) <br>
-&emsp;[Datasets](#datasets) <br>
 &emsp;[Neural Network](#neural-network) <br>
+&emsp;[Datasets](#datasets) <br>
 &emsp;[Training](#training) <br>
 &emsp;[Testing](#testing)
 
